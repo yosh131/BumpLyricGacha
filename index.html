@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歌詞ガチャ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>BUMP歌詞ガチャ</h1>
+        <form id="gachaForm">
+            <label for="nameInput">診断したい名前を入れてください</label>
+            <br>
+            <input type="text" id="nameInput" required>
+            <br>
+            <button type="button" onclick="generateLyric()">ガチャを引く</button>
+            <br>
+            <div class="author"> 作成者: @yoshi_b_o_c </div>
+        </form>
+        <div id="lyricDisplay" class="hidden">
+            <h2>ランダムな歌詞</h2>
+            <p id="lyricText"></p>
+            <button onclick="shareOnTwitter()">Twitterでシェア</button>
+        </div>
+    </div>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</body>
+
+</html>
