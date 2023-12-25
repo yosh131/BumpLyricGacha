@@ -6,28 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歌詞ガチャ</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
     <div class="container">
         <h1>BUMP歌詞ガチャ</h1>
+        <h5>毎日結果が変わります。その日のお守りとしてリュックに詰めていってください</h5><br>
         <form id="gachaForm">
-            <label for="nameInput">診断したい名前を入れてください</label>
+            <label for="nameInput">名前を入力してください</label>
             <br>
             <input type="text" id="nameInput" required>
             <br>
+
+            <!-- プルダウンメニューの追加 -->
+            <label for="numPhraseSelect">フレーズ数:</label>
+            <select id="numPhraseSelect">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select><br><br>
+
+
             <button type="button" onclick="generateLyric()">ガチャを引く</button>
             <br>
-            <div class="author"> 作成者: @yoshi_b_o_c </div>
         </form>
         <div id="lyricDisplay" class="hidden">
-            <h2>ランダムな歌詞</h2>
+            <h2 id="gachaResult">ガチャ結果</h2>
             <p id="lyricText"></p>
-            <button onclick="shareOnTwitter()">Twitterでシェア</button>
+            <br>
+            <p id="titleText"></p>
+            <!-- <button onclick="shareOnTwitter()">Twitterでシェア</button> -->
+            <button id="twitterShareBtn" href="#" onclick="shareOnTwitter()">Twitterでシェアする</button>
+
+            <br>
+
+            <div class="author"> 作成者: <a href="https://twitter.com/yoshi_b_o_c">@yoshi_b_o_c</a></div>
         </div>
     </div>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
 </body>
 
 </html>

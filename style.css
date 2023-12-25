@@ -25,6 +25,12 @@ h1 {
     color: #333;
 }
 
+/* h3 {
+    font-weight: normal;
+    color: #fc0000;
+} */
+
+
 form {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -45,6 +51,8 @@ input {
 }
 
 button {
+    width: 12em;
+    height: 3em;
     padding: 8px 16px;
     background-color: #006e6e;
     color: #fff;
@@ -64,4 +72,23 @@ button {
 
 .hidden {
     display: none;
+}
+
+select {
+    padding: 8px;
+    /* 選択ボックス内の余白 */
+    font-size: 16px;
+    /* フォントサイズ */
+    border: 1px solid #ddd;
+    /* 境界線 */
+    border-radius: 4px;
+    /* 角丸 */
+}
+
+/* 選択された項目のスタイル（任意で設定） */
+select option:checked {
+    background-color: #3498db;
+    /* 選択された項目の背景色 */
+    color: #fff;
+    /* 選択された項目の文字色 */
 }
