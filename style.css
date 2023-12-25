@@ -72,7 +72,8 @@ button {
 }
 
 #lyricText {
-    font-style: italic;
+    /* font-style: italic; */
+    font-style: normal;
 }
 
 .hidden {

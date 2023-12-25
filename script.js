@@ -56,8 +56,12 @@ function getLyric(data, seed) {
     const idx = random.nextInt(0, MAX_NUM);
     const lyricAll = data[idx].lyric;
     const lyricList = lyricAll.split(/[ 　]+/);
-    const idxLyric = random.nextInt(0, lyricList.length);
-    const retLyric = lyricList.slice(idxLyric, idxLyric + 1).join(' ');
+    let idxLyric = random.nextInt(0, lyricList.length);
+    let retLyric = lyricList.slice(idxLyric, idxLyric + 1).join(' ');
+    while (retLyric.trim() === '') {
+        idxLyric = random.nextInt(0, lyricList.length);
+        retLyric = lyricList.slice(idxLyric, idxLyric + 1).join(' ');
+    }
     // return retLyric;
     return {
         lyric: retLyric,
