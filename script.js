@@ -48,15 +48,17 @@ function generateSeed(name) {
 
 
 // ランダムな歌詞を1フレーズ取得する関数
-function getLyric(data, seed) {
+function getLyric(data, seed1, seed2) {
     const MAX_NUM = data.length;
-    const random = new Random(seed);
+    // 曲番号と歌詞番号の乱数シードは別のものを使う必要がある
+    const random = new Random(seed1);
+    const random2 = new Random(seed2);
 
     // ランダムなインデックスで歌詞を選択
     const idx = random.nextInt(0, MAX_NUM);
     const lyricAll = data[idx].lyric;
     const lyricList = lyricAll.split(/[ 　]+/);
-    let idxLyric = random.nextInt(0, lyricList.length);
+    let idxLyric = random2.nextInt(0, lyricList.length);
     let retLyric = lyricList.slice(idxLyric, idxLyric + 1).join(' ');
     while (retLyric.trim() === '') {
         idxLyric = random.nextInt(0, lyricList.length);
@@ -107,10 +109,11 @@ function generateLyric() {
         const nameInput = document.getElementById('nameInput');
         const name = nameInput.value;
         const seed = generateSeed(name + NUM_PHRASE.toString());
+        const seed2 = generateSeed(NUM_PHRASE.toString() + name);
 
         // 歌詞を生成
         for (let i = 0; i < NUM_PHRASE; i++) {
-            let songObj = getLyric(yourData, seed + i);
+            let songObj = getLyric(yourData, seed + i, seed2 + i);
             L.push(songObj.lyric);
             T.push(songObj.title);
         }

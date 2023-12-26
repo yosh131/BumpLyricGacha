@@ -74,6 +74,10 @@ button {
 #lyricText {
     /* font-style: italic; */
     font-style: normal;
+    background-color: #f2f2f2;
+    /* 薄いグレーの背景色 */
+    padding: 10px;
+    /* 余白を追加 */
 }
 
 .hidden {
