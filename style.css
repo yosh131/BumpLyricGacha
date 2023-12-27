@@ -67,6 +67,11 @@ button {
     margin-bottom: 20px;
 }
 
+.Twitter {
+    background-color: rgb(6, 164, 255);
+    color: #fff;
+}
+
 #lyricDisplay {
     margin-top: 20px;
 }

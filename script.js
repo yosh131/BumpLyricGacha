@@ -26,14 +26,22 @@ class Random {
 }
 
 // ハッシュ・Seedを作成
-function generateSeed(name) {
+function generateSeed(name, isFirstCall) {
     // 現在の日付を取得
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
-    const formattedDate = `${year}${month}${day}`;
-
+    let formattedDate = '';
+    if (isFirstCall) {
+        formattedDate = `${year}${month}${day}`;
+    } else {
+        // 初回でない時は秒までシードに含める
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+        formattedDate = `${year}${month}${day}-${hours}:${minutes}:${seconds}`;
+    }
     // 日付と入力された名前を結合して文字列を作成
     const combinedString = formattedDate + name;
 
@@ -99,6 +107,9 @@ function parseCSV(csv) {
     return result;
 }
 
+
+var isFirstCall = true;
+
 // 歌詞を生成する関数
 function generateLyric() {
     const numPhraseSelect = document.getElementById('numPhraseSelect');
@@ -108,8 +119,9 @@ function generateLyric() {
         const T = [];
         const nameInput = document.getElementById('nameInput');
         const name = nameInput.value;
-        const seed = generateSeed(name + NUM_PHRASE.toString());
-        const seed2 = generateSeed(NUM_PHRASE.toString() + name);
+        const seed = generateSeed(name + NUM_PHRASE.toString(), isFirstCall);
+        const seed2 = generateSeed(NUM_PHRASE.toString() + name, isFirstCall);
+        isFirstCall = false;
 
         // 歌詞を生成
         for (let i = 0; i < NUM_PHRASE; i++) {
@@ -124,8 +136,10 @@ function generateLyric() {
         const titleText = T.join('\ /\ ');
 
         // ボタンを非表示にし、lyricDisplayを表示する
-        document.querySelector('button').style.display = 'none';
-        document.getElementById('gachaForm').style.display = 'none';
+        // document.querySelector('button').style.display = 'none';
+        // document.getElementById('gachaForm').style.display = 'none';
+        document.querySelector('button').textContent = 'ガチャを引き直す';
+
         document.getElementById('lyricDisplay').classList.remove('hidden');
         document.getElementById('lyricText').textContent = lyricText;
         document.getElementById('titleText').textContent = titleText;
