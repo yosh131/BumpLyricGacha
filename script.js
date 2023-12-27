@@ -125,7 +125,7 @@ function generateLyric() {
 
         // 歌詞を生成
         for (let i = 0; i < NUM_PHRASE; i++) {
-            let songObj = getLyric(yourData, seed + i, seed2 + i);
+            let songObj = getLyric(yourData, seed + 42 * i, seed2 + 24 * i);
             L.push(songObj.lyric);
             T.push(songObj.title);
         }
